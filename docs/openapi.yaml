@@ -26,7 +26,7 @@ paths:
 
   /flyingsite/{id}:
     get:
-      summary: Check if a flyingsite is active FAIR FLY site
+      summary: Check if a flying site is active FAIR FLY site
       description: Returns whether the flying site with the given ID is an active FAIR FLY site.
       parameters:
         - name: id
@@ -48,7 +48,7 @@ paths:
 
   /flyingsite/status/{id}:
     get:
-      summary: Get detailed status of a flyingsite
+      summary: Get detailed status of a flying site
       description: Returns various status strings describing the current state of the flying site with the given ID.
       parameters:
         - name: id
