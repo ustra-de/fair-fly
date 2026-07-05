@@ -4,7 +4,7 @@ info:
   description: REST API to retrieve detailed information about flyingsites affiliated with FAIR FLY.
   version: 1.0.0
 servers:
-  - url: https://fair-fly.com
+  - url: https://api.fair-fly.com
     description: Public live server (Production)
 
 paths:
