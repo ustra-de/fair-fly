@@ -4,41 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FAIR FLY API Documentation</title>
-  <!-- Offizielle Swagger UI Stylesheets -->
-  <link rel="stylesheet" href="https://unpkg.com" />
-  <link rel="icon" type="image/png" href="https://unpkg.com" sizes="32x32" />
   <style>
-    html { box-sizing: border-box; }
-    *, *:before, *:after { box-sizing: inherit; }
-    body { margin: 0; background: #fafafa; }
+    body { margin: 0; }
   </style>
 </head>
 <body>
+  <!-- Der Pfad wurde auf das exakte GitHub-Pages-Verzeichnis angepasst -->
+  <script 
+    id="api-reference" 
+    data-url="/fair-fly/openapi.yaml"
+  ></script>
 
-  <!-- Das Element, in das Swagger gerendert wird -->
-  <div id="swagger-ui"></div>
-
-  <!-- Offizielle Swagger UI Skripte -->
-  <script src="https://unpkg.com"></script>
-  <script src="https://unpkg.com"></script>
-  
-  <script>
-    window.onload = () => {
-      window.ui = SwaggerUIBundle({
-        // Wichtig: Relativer Pfad zur YAML-Datei im selben docs-Ordner
-        url: './openapi.yaml', 
-        dom_id: '#swagger-ui',
-        deepLinking: true,
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          SwaggerUIStandalonePreset // Lädt das visuelle Standard-Layout
-        ],
-        plugins: [
-          SwaggerUIBundle.plugins.DownloadUrl
-        ],
-        layout: "StandaloneLayout" // Erzwingt die korrekte Strukturierung der UI-Komponenten
-      });
-    };
-  </script>
+  <!-- Das offizielle Scalar CDN-Skript (Modernes Design-System) -->
+  <script src="https://jsdelivr.net"></script>
 </body>
 </html>
