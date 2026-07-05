@@ -10,6 +10,7 @@ api.fair-fly.com
 
 ## Prerequisitions
 API Key, can be request by email to info@fair-fly.com.
+
 Please provide the following information:
 1. First name
 2. Last name
