@@ -1,15 +1,32 @@
-# FAIR FLY
+# FAIR FLY API
 
-FAIR FLY API
+Welcome to the official repository for the **FAIR FLY API**. This REST API allows clients to determine which sites from the DHV database have been linked to FAIR FLY by site operators and what their status is in FAIR FLY.
 
-## Features
-Allows to find out which flying sites from the DHV's site database are connected to FAIR FLY and what their status is.
 
 ## URL
 api.fair-fly.com
 
-## Prerequisitions
-API Key, can be request by email to info@fair-fly.com.
+
+## 🚀 Interactive Documentation
+
+The full API specification and interactive test console are hosted via GitHub Pages. You can test endpoints, view required parameters, and check response formats directly in your browser:
+
+👉 **[View Interactive API Documentation](https://github.io)**
+
+
+## 🛠️ Endpoints Summary
+
+- **GET** `/user` - Retrieve the current authenticated user's profile.
+- **GET** `/flyingsite/{id}` - Verify if a specific site ID is an active FAIR FLY site.
+- **GET** `/flyingsite/status/{id}` - Retrieve the current operational and weather status strings for a flying site.
+
+
+## 🔑 Authentication
+
+All requests to the API endpoints require authentication via an API Key. 
+Please include your key in the HTTP header of your requests.
+
+API Key, can be requested by email to info@fair-fly.com.
 
 Please provide the following information:
 1. First name
@@ -19,10 +36,6 @@ Please provide the following information:
 
 Email requests with incomplete information will be automatically ignored.
 
-## API Documentation
-
-Find the API documentation:
-👉 https://ustra-de.github.io/fair-fly
 
 ## Autor
 
