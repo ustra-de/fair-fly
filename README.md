@@ -17,7 +17,7 @@ Please provide the following information:
 3. Email address
 4. Purpose of use
 
-Emails containing incomplete information will be ignored.
+Email requests with incomplete information will be automatically ignored.
 
 ## API Documentation
 
