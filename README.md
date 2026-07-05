@@ -1,4 +1,4 @@
-# fair-fly
+# FAIR FLY
 
 FAIR FLY API
 
