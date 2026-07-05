@@ -1,1 +1,127 @@
+openapi: 3.0.3
+info:
+  title: FAIR FLY API
+  description: REST API to retrieve detailed information about flyingsites affiliated with FAIR FLY.
+  version: 1.0.0
+servers:
+  - url: https://fair-fly.com
+    description: Public live server (Production)
 
+paths:
+  /user:
+    get:
+      summary: Retrieve the current user
+      description: Returns the profile information of the currently authenticated user.
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized (API key missing or invalid)
+
+  /flyingsite/{id}:
+    get:
+      summary: Check if a flyingsite is active FAIR FLY site
+      description: Returns whether the flying site with the given ID is an active FAIR FLY site.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique ID of the flying site
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FairFly' # Nutzt jetzt das JSON-Objekt-Schema
+        '404':
+          description: Flying site not found
+
+  /flyingsite/status/{id}:
+    get:
+      summary: Get detailed status of a flyingsite
+      description: Returns various status strings describing the current state of the flying site with the given ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique ID of the flying site
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlyingSiteStatus'
+        '404':
+          description: Flying site not found
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 42
+        username:
+          type: string
+          example: johndoe
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+        firstname:
+          type: string
+          example: John
+        lastname:
+          type: string
+          example: Doe
+      required:
+        - id
+        - username
+        - email
+        - firstname
+        - lastname
+
+    FairFly:
+      type: object
+      properties:
+        fairfly:
+          type: boolean
+          example: true
+      required:
+        - fairfly
+
+    FlyingSiteStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SITE_STATUS_OPEN
+          enum:
+            - SITE_STATUS_UNKNOWN
+            - SITE_STATUS_CLOSED
+            - SITE_STATUS_OPEN
+            - SITE_STATUS_CONDITIONALLY_OPEN
+            - SITE_STATUS_OPENING_HOURS
+      required:
+        - status
