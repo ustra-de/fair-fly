@@ -19,7 +19,7 @@ https://api.fair-fly.com
 The full API specification and interactive test console are hosted via GitHub Pages. You can test endpoints, view required parameters, and check response formats directly in your browser:
 
 **[View Interactive API Documentation](https://ustra-de.github.io/fair-fly)**
-
+**<a href="https://ustra-de.github.io/fair-fly" target="_blank">Linktext</a>**
 
 ## 🔑 Authentication
 
