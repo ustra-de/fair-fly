@@ -1,1 +1,45 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAIR FLY API Documentation</title>
+  <!-- Swagger UI CSS laden -->
+  <link rel="stylesheet" href="https://unpkg.com" />
+  <link rel="icon" type="image/png" href="https://unpkg.com" sizes="32x32" />
+  <style>
+    html { box-sizing: border-box; overflow: -webkit-scrollbar; }
+    *, *:before, *:after { box-sizing: inherit; }
+    body { margin: 0; background: #fafafa; }
+  </style>
+</head>
+<body>
+
+  <!-- Hier wird die Dokumentation hineingerendert -->
+  <div id="swagger-ui"></div>
+
+  <!-- Swagger UI Scripte laden -->
+  <script src="https://unpkg.com"></script>
+  <script src="https://unpkg.com"></script>
+  
+  <script>
+    window.onload = () => {
+      window.ui = SwaggerUIBundle({
+        // Pfad zu Ihrer YAML-Datei (liegt im selben Ordner)
+        url: './openapi.yaml', 
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "BaseLayout"
+      });
+    };
+  </script>
+</body>
+</html>
