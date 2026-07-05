@@ -3,7 +3,7 @@
 FAIR FLY API
 
 ## Features
-Allows you to find out which flying sites from the DHV's site database are connected to FAIR FLY and what their status is.
+Allows to find out which flying sites from the DHV's site database are connected to FAIR FLY and what their status is.
 
 ## URL
 api.fair-fly.com
