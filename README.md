@@ -10,7 +10,7 @@ https://api.fair-fly.com
 ## Endpoints Summary
 
 - **GET** `/user` - Retrieve the current authenticated user's profile.
-- **GET** `/flyingsite/{id}` - Use a flying site's ID to check whether it is an active FAIR FLY site.
+- **GET** `/flyingsite/{id}` - Use the flying site's ID to check whether it is an active FAIR FLY site.
 - **GET** `/flyingsite/status/{id}` - Retrieve the current FAIR FLY status of the flying site using its ID.
 
 
