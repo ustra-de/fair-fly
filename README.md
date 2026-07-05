@@ -7,18 +7,18 @@ Welcome to the official repository for the **FAIR FLY API**. This REST API allow
 api.fair-fly.com
 
 
-## 🚀 Interactive Documentation
+## Interactive Documentation
 
 The full API specification and interactive test console are hosted via GitHub Pages. You can test endpoints, view required parameters, and check response formats directly in your browser:
 
-👉 **[View Interactive API Documentation](https://github.io)**
+**[View Interactive API Documentation](https://github.io)**
 
 
-## 🛠️ Endpoints Summary
+## Endpoints Summary
 
 - **GET** `/user` - Retrieve the current authenticated user's profile.
-- **GET** `/flyingsite/{id}` - Verify if a specific site ID is an active FAIR FLY site.
-- **GET** `/flyingsite/status/{id}` - Retrieve the current operational and weather status strings for a flying site.
+- **GET** `/flyingsite/{id}` - Use a flying site's ID to check whether it is an active FAIR FLY site.
+- **GET** `/flyingsite/status/{id}` - Retrieve the current FAIR FLY status of the flying site using its ID.
 
 
 ## 🔑 Authentication
