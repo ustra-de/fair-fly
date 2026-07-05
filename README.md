@@ -8,7 +8,7 @@ Allows you to find out which flying sites from the DHV's site database are conne
 ## URL
 api.fair-fly.com
 
-## Prerequisitions
+## Prerequsitions
 API Key, can be request by email to info@fair-fly.com.
 Please provide the following information:
 1. First name
@@ -17,6 +17,12 @@ Please provide the following information:
 4. Purpose of use
 
 Emails containing incomplete information will be ignored.
+
+## Installation
+
+## Configuration
+
+## Usage
 
 ## API Documentation
 
