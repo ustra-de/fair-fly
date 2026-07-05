@@ -18,12 +18,6 @@ Please provide the following information:
 
 Emails containing incomplete information will be ignored.
 
-## Installation
-
-## Configuration
-
-## Usage
-
 ## API Documentation
 
 Find the API documentation:
