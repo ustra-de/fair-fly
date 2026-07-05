@@ -26,7 +26,7 @@ The full API specification and interactive test console are hosted via GitHub Pa
 All requests to the API endpoints require authentication via an API Key. 
 Please include your key in the HTTP header of your requests.
 
-API Key, can be requested by email to info@fair-fly.com.
+API Key can be requested by email to info@fair-fly.com.
 
 Please provide the following information:
 1. First name
