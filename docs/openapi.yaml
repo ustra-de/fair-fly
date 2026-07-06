@@ -29,9 +29,7 @@ paths:
       summary: Check if a flying site is active FAIR FLY site
       description: Returns whether the flying site with the given ID is an active FAIR FLY site.
       security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
+        - ApiKeyAuth: [] # Korrekt platziert
       parameters:
         - name: id
           in: path
@@ -40,13 +38,13 @@ paths:
           schema:
             type: integer
             example: 42
-      responses:
+      responses: # Doppelte 'responses'-Zeilen entfernt und nach unten korrigiert
         '200':
           description: Successful request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FairFly' # Nutzt jetzt das JSON-Objekt-Schema
+                $ref: '#/components/schemas/FairFly'
         '404':
           description: Flying site not found
 
@@ -55,9 +53,7 @@ paths:
       summary: Get detailed status of a flying site
       description: Returns various status strings describing the current state of the flying site with the given ID.
       security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
+        - ApiKeyAuth: [] # Korrekt platziert
       parameters:
         - name: id
           in: path
@@ -66,7 +62,7 @@ paths:
           schema:
             type: integer
             example: 42
-      responses:
+      responses: # Doppelte 'responses'-Zeilen entfernt und nach unten korrigiert
         '200':
           description: Successful request
           content:
