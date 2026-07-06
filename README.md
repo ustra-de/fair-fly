@@ -4,7 +4,7 @@ Welcome to the official repository for the **FAIR FLY API**. This REST API allow
 
 
 ## URL
-https://api.fair-fly.com
+https://api.fair-fly.com/v1
 
 
 ## Endpoints Summary
