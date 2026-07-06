@@ -4,11 +4,11 @@ info:
   description: REST API to retrieve detailed information about flyingsites affiliated with FAIR FLY.
   version: 1.0.0
 servers:
-  - url: https://api.fair-fly.com/v1
+  - url: https://api.fair-fly.com
     description: Public live server (Production)
 
 paths:
-  /user:
+  /v1/user:
     get:
       summary: Retrieve the current user
       description: Returns the profile information of the currently authenticated user.
@@ -24,7 +24,7 @@ paths:
         '401':
           description: Unauthorized (API key missing or invalid)
 
-  /flyingsite/{id}:
+  /v1/flyingsite/{id}:
     get:
       summary: Check if a flying site is active FAIR FLY site
       description: Returns whether the flying site with the given ID is an active FAIR FLY site.
@@ -46,7 +46,7 @@ paths:
         '404':
           description: Flying site not found
 
-  /flyingsite/status/{id}:
+  /v1/flyingsite/status/{id}:
     get:
       summary: Get detailed status of a flying site
       description: Returns various status strings describing the current state of the flying site with the given ID.
