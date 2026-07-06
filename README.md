@@ -4,14 +4,14 @@ Welcome to the official repository for the **FAIR FLY API**. This REST API allow
 
 
 ## URL
-https://api.fair-fly.com/v1
+https://api.fair-fly.com
 
 
 ## Endpoints Summary
 
-- **GET** `/user` - Retrieve the current authenticated user's profile.
-- **GET** `/flyingsite/{id}` - Use the flying site's ID to check whether it is an active FAIR FLY site.
-- **GET** `/flyingsite/status/{id}` - Retrieve the current FAIR FLY status of the flying site using its ID.
+- **GET** `/v1/user` - Retrieve the current authenticated user's profile.
+- **GET** `/v1/flyingsite/{id}` - Use the flying site's ID to check whether it is an active FAIR FLY site.
+- **GET** `/v1/flyingsite/status/{id}` - Retrieve the current FAIR FLY status of the flying site using its ID.
 
 
 ## Interactive Documentation
