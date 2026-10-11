@@ -7,13 +7,14 @@ servers:
   - url: https://api.fair-fly.com/v1
     description: Public live server (Production)
 
+security:
+  - ApiKeyAuth: []
+
 paths:
   /user:
     get:
       summary: Retrieve the current user
       description: Returns the profile information of the currently authenticated user.
-      security:
-        - ApiKeyAuth: []
       responses:
         '200':
           description: Successful request
@@ -21,15 +22,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/MissingApiKey'
         '401':
-          description: Unauthorized (API key missing or invalid)
+          $ref: '#/components/responses/InvalidApiKey'
 
   /flyingsite/{id}:
     get:
       summary: Check if a flying site is active FAIR FLY site
-      description: Returns whether the flying site with the given ID is an active FAIR FLY site.
-      security:
-        - ApiKeyAuth: [] # Korrekt platziert
+      description: Returns whether the flying site with the given ID is an active FAIR FLY site. Unknown IDs return false.
       parameters:
         - name: id
           in: path
@@ -38,22 +39,24 @@ paths:
           schema:
             type: integer
             example: 42
-      responses: # Doppelte 'responses'-Zeilen entfernt und nach unten korrigiert
+      responses:
         '200':
           description: Successful request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FairFly'
+        '400':
+          $ref: '#/components/responses/MissingApiKey'
+        '401':
+          $ref: '#/components/responses/InvalidApiKey'
         '404':
-          description: Flying site not found
+          $ref: '#/components/responses/InvalidRequest'
 
   /flyingsite/status/{id}:
     get:
       summary: Get detailed status of a flying site
-      description: Returns various status strings describing the current state of the flying site with the given ID.
-      security:
-        - ApiKeyAuth: [] # Korrekt platziert
+      description: Returns various status strings describing the current state of the flying site with the given ID. Unknown IDs return SITE_STATUS_UNKNOWN.
       parameters:
         - name: id
           in: path
@@ -62,15 +65,65 @@ paths:
           schema:
             type: integer
             example: 42
-      responses: # Doppelte 'responses'-Zeilen entfernt und nach unten korrigiert
+      responses:
         '200':
           description: Successful request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlyingSiteStatus'
+        '400':
+          $ref: '#/components/responses/MissingApiKey'
+        '401':
+          $ref: '#/components/responses/InvalidApiKey'
         '404':
-          description: Flying site not found
+          $ref: '#/components/responses/InvalidRequest'
+
+  /version:
+    servers:
+      - url: https://api.fair-fly.com
+        description: Public live server (Production), unversioned meta endpoint
+    get:
+      summary: Get the API version
+      description: Returns version and build number of the API. Public, unversioned endpoint (no /v1 prefix), no API key required.
+      security: []
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+        '405':
+          description: Method not allowed (only GET is supported)
+
+  /health:
+    servers:
+      - url: https://api.fair-fly.com
+        description: Public live server (Production), unversioned meta endpoint
+    get:
+      summary: Get the health status of the API
+      description: Checks whether the API and its database are operational. Public, unversioned endpoint (no /v1 prefix), no API key required. Response format follows the IETF draft 'Health Check Response Format for HTTP APIs'.
+      security: []
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Health'
+              example:
+                status: pass
+        '405':
+          description: Method not allowed (only GET is supported)
+        '503':
+          description: API is not healthy (e.g. database unreachable)
+          content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Health'
+              example:
+                status: fail
 
 components:
   securitySchemes:
@@ -78,6 +131,34 @@ components:
       type: apiKey
       in: header
       name: X-API-KEY
+
+  responses:
+    MissingApiKey:
+      description: Bad request (API key missing)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: missing API key
+
+    InvalidApiKey:
+      description: Unauthorized (API key invalid)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: invalid API key
+
+    InvalidRequest:
+      description: Invalid request (malformed path, e.g. non-numeric ID)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: invalid request
 
   schemas:
     User:
@@ -127,5 +208,35 @@ components:
             - SITE_STATUS_OPEN
             - SITE_STATUS_CONDITIONALLY_OPEN
             - SITE_STATUS_OPENING_HOURS
+      required:
+        - status
+
+    Version:
+      type: object
+      properties:
+        version:
+          type: string
+          example: v1.0 build 26.1009
+      required:
+        - version
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: invalid request
+      required:
+        - message
+
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - pass
+            - fail
+          example: pass
       required:
         - status
